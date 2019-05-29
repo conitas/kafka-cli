@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  kafka-cli:
+    image: itasgmbhde/kafka-cli
+    build: .
+    networks:
+      - kafka-cli
+
+networks:
+  kafka-cli:

@@ -9,5 +9,5 @@ spec:
     - name: kafka-cli
       image: itasgmbhde/kafka-cli
       command: ["/bin/sh"]
-      args: ["-c", "while true; sleep 3600; done"]
+      args: ["-c", "while true; do sleep 3600; done"]
   restartPolicy: OnFailure

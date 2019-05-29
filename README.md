@@ -14,12 +14,12 @@ inspired by https://github.com/taion809/kafka-cli
 
 ## Run consumer
 ```
- docker-compose run kafka-cli kafka-console-consumer.sh --bootstrap-server kafka:9092 --topic test --from-beginning
+ docker-compose exec kafka-cli kafka-console-consumer.sh --bootstrap-server kafka:9092 --topic test --from-beginning
 ``` 
 
 ## Run producer
 ```
- docker-compose run kafka-cli kafka-console-producer.sh --broker-list kafka:9092 --topic test
+ docker-compose exec kafka-cli kafka-console-producer.sh --broker-list kafka:9092 --topic test
 ```
 Try to submit some messages via console of producer. Consumer will echoing them.
 
@@ -28,7 +28,7 @@ Start kafka-cli pod within some namespace (eg. `dev`)
 ```
  kubectl -n dev apply -f k8s.yml
 ```                                     
-Then run
+Then run commands via 
 ```
-  kubectl -n dev 
+  kubectl -n dev exec kafka-cli ...
 ```

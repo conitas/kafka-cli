@@ -14,8 +14,9 @@ RUN apk update && apk add bash && rm -rf /var/cache/apk/* \
  && mkdir -p ${KAFKA_WORKDIR} \
  && tar -xzpf ${KAFKA_TEMP_FILE} --strip-components=1 -C ${KAFKA_WORKDIR} \
  && rm ${KAFKA_TEMP_FILE}  \
- && rm -rf ${KAFKA_WORKDIR}/bin/windows \
- && export PATH=$PATH:/opt/kafka/bin
+ && rm -rf ${KAFKA_WORKDIR}/bin/windows
+
+ENV PATH ${PATH}:/opt/kafka/bin
 
 WORKDIR /opt
 ENTRYPOINT ["/opt/entry-point.sh"]

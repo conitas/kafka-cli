@@ -1,7 +1,7 @@
 # kafka-cli
-Kafka CLI Docker Image
+Kafka CLI Docker Image based on Alpine Linux distribution with smaller footprint
 
-inspired by https://github.com/taion809/kafka-cli
+Inspired by https://github.com/taion809/kafka-cli
 
 # Build
 ```
@@ -24,11 +24,22 @@ inspired by https://github.com/taion809/kafka-cli
 Try to submit some messages via console of producer. Consumer will echoing them.
 
 # Kubernetes
-Start kafka-cli pod within some namespace (eg. `dev`) 
+_Assuming, Kafka cluster already running in Kubernetes_
+
+Start kafka-cli pod within some namespace (eg. `dev`):
 ```
  kubectl -n dev apply -f k8s.yml
-```                                     
-Then run commands via 
+```                  
+Create topic if doesn't exist:
+```                                   
+ kubectl -n dev exec -it kafka-cli --  kafka-topics.sh --create --bootstrap-server kafka:9092 --topic test --replication-factor 1 --partitions 1
 ```
-  kubectl -n dev exec kafka-cli ...
+Then run consumer with command: 
 ```
+ kubectl -n dev exec -it kafka-cli -- kafka-console-consumer.sh --bootstrap-server kafka:9092 --topic test --from-beginning
+```
+Produce some messages:
+```         
+ kubectl -n dev exec -it kafka-cli --  kafka-console-producer.sh --broker-list kafka:9092 --topic test
+```
+

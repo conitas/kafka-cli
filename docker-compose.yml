@@ -2,7 +2,7 @@ version: "3.4"
 
 services:
   kafka-cli:
-    image: itasgmbhde/kafka-cli
+    image: conitasgmbh/kafka-cli
     build: .
     command: ["/bin/sh", "-c", "while true; do sleep 10; done"]
     

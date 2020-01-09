@@ -1,8 +1,8 @@
 FROM azul/zulu-openjdk-alpine:11-jre
 MAINTAINER Ghenadii Batalski <ghenadii.batalski@conitas.de>
 
-ENV KAFKA_VERSION=2.2.0
-ENV KAFKA_URL=https://www-eu.apache.org/dist/kafka/${KAFKA_VERSION}/kafka_2.12-${KAFKA_VERSION}.tgz
+ENV KAFKA_VERSION=2.4.0
+ENV KAFKA_URL=https://www-eu.apache.org/dist/kafka/${KAFKA_VERSION}/kafka_2.13-${KAFKA_VERSION}.tgz
 ENV KAFKA_TEMP_FILE=/opt/kafka.tgz
 ENV KAFKA_WORKDIR=/opt/kafka
 
